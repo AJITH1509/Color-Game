@@ -1,0 +1,25 @@
+.colors-container{
+  margin: 0px auto;
+  display: flex;
+  max-width: 400px;
+
+}
+.color-Blocks{
+  margin: 0px auto;
+  width: 300px;
+  height: 20px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.header{
+  text-align: center;
+}
+.container{
+  display: flex;
+  justify-content: center;
+}
+input{
+  border-radius: 5px;
+  padding-left: 10px;
+  font-weight: bolder;
+}
