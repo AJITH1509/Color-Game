@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export function ColorBox() {
   const [button, setButton] = useState(true);
@@ -13,7 +14,6 @@ export function ColorBox() {
     setColor(colors);
     setButton(false);
     setIndex(index);
-    console.log(index);
   }
 
   function updateColor() {
@@ -21,6 +21,11 @@ export function ColorBox() {
     updatedColors[index] = color; // update the color at the specified index
     setAddcolor(updatedColors); // set the state with the updated colors array
     setButton(true);
+  }
+  function deleteColor(index) {
+    const clrs = [...addcolor];
+    const deleteColors = clrs.filter((colors, i) => i !== index);
+    setAddcolor(deleteColors);
   }
 
   const styles = {
@@ -38,13 +43,19 @@ export function ColorBox() {
         />
         {button ? (
           <Button
-            variant="contained"
+            sx={{ marginLeft: "5px" }}
+            variant="outlined"
             onClick={() => setAddcolor([...addcolor, color])}
           >
             Add Color
           </Button>
         ) : (
-          <Button variant="contained" onClick={() => updateColor()}>
+          <Button
+            sx={{ marginLeft: "5px" }}
+            color="success"
+            variant="outlined"
+            onClick={() => updateColor()}
+          >
             Update Color
           </Button>
         )}
@@ -55,12 +66,13 @@ export function ColorBox() {
           key={index}
           index={index}
           editColor={editColor}
+          deleteColor={deleteColor}
         />
       ))}
     </div>
   );
 }
-function ColorBlocks({ colors, index, editColor }) {
+function ColorBlocks({ colors, index, editColor, deleteColor }) {
   const bclr = {
     backgroundColor: colors,
   };
@@ -70,8 +82,16 @@ function ColorBlocks({ colors, index, editColor }) {
       <IconButton
         sx={{ padding: "0px" }}
         onClick={() => editColor(colors, index)}
+        color="secondary"
       >
         <ModeEditIcon />
+      </IconButton>
+      <IconButton
+        sx={{ padding: "0px" }}
+        onClick={() => deleteColor(index)}
+        color="error"
+      >
+        <DeleteIcon />
       </IconButton>
     </div>
   );
