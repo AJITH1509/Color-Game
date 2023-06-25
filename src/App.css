@@ -1,12 +1,15 @@
 .colors-container{
   margin: 0px auto;
   display: flex;
-  max-width: 400px;
+  max-width: 600px;
 
+}
+.para{
+  text-align: center;
 }
 .color-Blocks{
   margin: 0px auto;
-  width: 300px;
+  width: 500px;
   height: 20px;
   margin-top: 5px;
   border-radius: 5px;
@@ -14,12 +17,34 @@
 .header{
   text-align: center;
 }
+.main-container{
+  min-height: 70vh;
+}
 .container{
   display: flex;
   justify-content: center;
 }
 input{
+  outline: none;
+  width: 200px;
   border-radius: 5px;
   padding-left: 10px;
   font-weight: bolder;
+  transition: width 0.3s;
+}
+input:focus{
+  border:none;
+  width: 205px;
+  outline: 3px solid blue;
+ 
+}
+
+@media screen and (max-width:768px) {
+  .color-Blocks{
+    margin: 0px auto;
+    width: 300px;
+    height: 20px;
+    margin-top: 5px;
+    border-radius: 5px;
+  }
 }
