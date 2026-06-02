@@ -1,5 +1,4 @@
 import { ColorBox } from "./ColorBox";
-import "./AddColor.css";
 
 export function AddColor() {
   return (
