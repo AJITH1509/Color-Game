@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
@@ -6,8 +6,6 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import DoneIcon from "@mui/icons-material/Done";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 // Helper for generating safe, runtime-unique keys without external dependencies
 const generateUniqueId = () => `color_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -24,14 +22,6 @@ export function ColorBox() {
     { id: "2", value: "#10b981" },
     { id: "3", value: "#3b82f6" }
   ]);
-
-  useEffect(() => {
-    AOS.init({
-      duration: 600,
-      easing: "ease-out-cubic",
-      once: true,
-    });
-  }, []);
 
   const handleAddColor = () => {
     if (!currentColor.trim()) return;
@@ -78,7 +68,7 @@ export function ColorBox() {
 
   return (
     <div className="main-container">
-      <div className="app-card" data-aos="fade-up">
+      <div className="app-card">
         <header className="app-header">
           <h2>Color Palette Canvas</h2>
           <p>Create, update, and manage your dynamic color components seamlessly.</p>
@@ -150,7 +140,7 @@ export function ColorBox() {
 
 function ColorBlocks({ colorItem, onEditTrigger, onDeleteTrigger }) {
   return (
-    <div className="colors-container" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+    <div className="colors-container">
       <div className="color-strip-preview" style={{ backgroundColor: colorItem.value }}>
         <span className="color-value-badge">{colorItem.value}</span>
       </div>
