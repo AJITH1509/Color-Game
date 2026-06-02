@@ -1,16 +1,26 @@
 import { ColorBox } from "./ColorBox";
+import "./AddColor.css";
 
 export function AddColor() {
   return (
-    <div className="AddColor-container">
-      <div className="header">
-        <h1>Color Game</h1>
-        <p className="para">type valid color name and click on add color</p>
+    <div className="page-layout-container">
+      <main className="main-content-area">
+        {/* Semantic page-level header configuration */}
+        <header className="game-brand-header">
+          <h1 className="game-title">Color Studio</h1>
+          <p className="game-instruction">
+            Type a valid color name or hex code below to expand your interactive canvas.
+          </p>
+        </header>
+        
+        {/* Main interactive application block */}
         <ColorBox />
-      </div>
-      <br />
-      <hr />
-      <p className="para"> © created by Ajithkumar</p>
+      </main>
+      
+      {/* Semantic footer layout with an automated runtime timestamp */}
+      <footer className="game-footer">
+        <p>© {new Date().getFullYear()} • Crafted with precision by Ajithkumar</p>
+      </footer>
     </div>
   );
 }
